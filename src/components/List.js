@@ -21,6 +21,7 @@ function List() {
 				<tr>
 				<th>Id</th>
 				<th>First Name</th>
+				<th>Email</th>
 				<th></th>
 				</tr>
 			</thead>
@@ -30,6 +31,7 @@ function List() {
 					<tr>
 						<td>{user.id}</td>
 						<td>{user.name}</td>
+						<td>{user.email}</td>
 						<td><Button type="button" onClick={() => handleDelete(user.id)} variant="danger">Sil</Button></td>
 					</tr>
 				))}

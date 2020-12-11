@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import {Button, Form} from 'react-bootstrap';
-import { v4 as uuidv4 } from "uuid";
 import validation from "../validation"
 import { useFormik } from "formik";
 import UserContext from "../contexts/UserContext";
@@ -11,11 +10,12 @@ function NewUserForm() {
 
 	const formik = useFormik({
 		initialValues: {
-			name: ""
+			name: "",
+			email: ""
 		},
 		onSubmit: async (values, bag) => {
 			console.log(bag);
-			setUsers([...users, { id: uuidv4(), name: values.name }]);
+			setUsers([...users, { id: users[users.length - 1].id + 1, name: values.name, email: values.email }]);
 			bag.resetForm();
 		},
 		validationSchema: validation,
@@ -41,13 +41,31 @@ function NewUserForm() {
 							onChange={handleChange}
 							onBlur={handleBlur}
 							disabled={isSubmitting}
-							placeholder="Yeni Kullanıcı" />
-				</Form.Group>
-				{errors.name && touched.name && (
-						<div className={styles.error}>{errors.name}</div>
+							placeholder="Kullanıcı Adı" />
+					{errors.name && touched.name && (
+						<Form.Text className={styles.error}>
+						{errors.name}
+						</Form.Text>
 					)}
+				</Form.Group>
+
+				<Form.Group controlId="formBasicEmail">
+					<Form.Control type="text" 
+						name="email" 
+						value={values.email}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						disabled={isSubmitting}
+						placeholder="Email" />
+					{errors.email && touched.email && (
+						<Form.Text className={styles.error}>
+						{errors.email}
+						</Form.Text>
+					)}
+				</Form.Group>
+
 				<Button variant="primary"value="add user" type="submit">
-					Yeni Kullanıcı
+					Yeni Kullanıcı Ekle
 				</Button>
 			</Form>
 		</div>
