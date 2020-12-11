@@ -21,7 +21,6 @@ export const UserProvider = ({ children }) => {
 			name: "Batu",
 		},
 	]);
-
 	const values = {
 		users,
 		filteredUsers: users.filter((data) =>

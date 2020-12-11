@@ -11,10 +11,6 @@ function NewUserForm() {
 
 	const [name, setName] = useState("");
 
-	useEffect(() => {
-		setName("");
-	}, [users]);
-
 	const formik = useFormik({
 		initialValues: {
 			name: ""
@@ -43,7 +39,7 @@ function NewUserForm() {
 				<Form.Group controlId="name">
 					<Form.Control type="text" 
 							name="name"
-							value={values.email}
+							value={values.name}
 							onChange={handleChange}
 							onBlur={handleBlur}
 							disabled={isSubmitting}
