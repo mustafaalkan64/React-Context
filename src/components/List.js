@@ -3,18 +3,16 @@ import UserContext from "../contexts/UserContext";
 import {Table, Button} from 'react-bootstrap';
 
 function List() {
-	const { filteredUsers } = useContext(UserContext);
-
-	const { users, setUsers, setFilteredUserCount } = useContext(UserContext);
+	const { users, setUsers, setFilteredUserCount, filteredUsers } = useContext(UserContext);
 
 	const handleDelete = (id) => {
-		const filtered = users.filter((user) => user.id !== id);
+	const filtered = users.filter((user) => user.id !== id);
 		setUsers(filtered);
 	};
 
 	useEffect(() => {
 		setFilteredUserCount(users.length);
-	  }, []);
+		}, [users.length, setFilteredUserCount]);
 
 	return (
 		<div>
