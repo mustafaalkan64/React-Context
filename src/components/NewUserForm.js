@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import {Button, Form} from 'react-bootstrap';
 import { v4 as uuidv4 } from "uuid";
 import validation from "../validation"
@@ -8,8 +8,6 @@ import styles from "../style.module.css";
 
 function NewUserForm() {
 	const { users, setUsers } = useContext(UserContext);
-
-	const [name, setName] = useState("");
 
 	const formik = useFormik({
 		initialValues: {
